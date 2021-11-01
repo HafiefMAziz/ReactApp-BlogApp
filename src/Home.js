@@ -1,7 +1,8 @@
 import { useState } from "react";
+import BlogList from "./BlogList";
 
 const Home = () => {
-// menggunanakan useState untuk menjadikan variable rective terhadap event
+// menggunakan useState untuk menjadikan variable reactive terhadap event
 const [blogs, setBlogs] = useState([
 
     { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
@@ -11,14 +12,9 @@ const [blogs, setBlogs] = useState([
 
     return ( 
         <div className="Home">
-            <h2>Homepage</h2>
-            {/* Menggunakan map speprti forecah unutk menampilkan list */}
-            { blogs.map((blog)=> ( 
-                <div className="blog-preview" key={ blog.id }>
-                    <h2>{ blog.title }</h2>
-                    <p>Writen by : { blog.author }</p>
-                </div>
-            )) }
+            {/* <h2>Homepage</h2> */}
+            <BlogList dataBlogs={blogs} title='All Blogs' />
+            <BlogList dataBlogs={blogs.filter((blog) => blog.author === 'mario')} title="Mario's Blogs" />
         </div>
      );
 }
